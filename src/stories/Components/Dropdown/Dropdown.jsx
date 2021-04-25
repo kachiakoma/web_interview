@@ -49,6 +49,7 @@ const customTheme = (base) => ({
 });
 
 const labelCN = cntl`
+  flex
   mb-2
   text-base
   text-gray-200
@@ -64,9 +65,15 @@ const Dropdown = ({
   isClearable,
   onChange,
   isDisabled,
+  isRequired,
 }) => (
   <div className={className}>
-    {label && <p className={labelCN}>{label}</p>}
+    {label && (
+      <div className={labelCN}>
+        <p>{label}</p>
+        {isRequired && <p className="text-brandGreen text-sm">*</p>}
+      </div>
+    )}
     <Select
       theme={customTheme}
       styles={customStyles}
